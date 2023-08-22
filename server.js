@@ -23,6 +23,12 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/agents", agentRoutes);
 app.use("/api/neighbourhood", neighbourhoodRoutes);
 
+// SET HEADERS
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 // ERROR HANDLERS
 app.use(notFound);
 app.use(errorHandler);
