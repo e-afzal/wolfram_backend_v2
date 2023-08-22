@@ -16,13 +16,6 @@ config();
 connectDB();
 app.use(express.json());
 
-// ROUTES
-app.use("/api/status", (req, res) => res.send("API is live"));
-app.use("/api/properties", propertyRoutes);
-app.use("/api/projects", projectRoutes);
-app.use("/api/agents", agentRoutes);
-app.use("/api/neighbourhood", neighbourhoodRoutes);
-
 // SET HEADERS
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -33,6 +26,13 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+
+// ROUTES
+app.use("/api/status", (req, res) => res.send("API is live"));
+app.use("/api/properties", propertyRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/agents", agentRoutes);
+app.use("/api/neighbourhood", neighbourhoodRoutes);
 
 // ERROR HANDLERS
 app.use(notFound);
